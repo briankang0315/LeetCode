@@ -1,15 +1,18 @@
-function twoSum(nums: number[], target: number): number[] {
-    const map = new Map<number, number>();
+function twoSum(nums: readonly number[], target: number): [number, number] {
+  if (nums.length < 2) throw new Error("Input must have at least 2 numbers");
 
-    for (let i = 0; i < nums.length; i++) {
-        const complement = target - nums[i];
+  const seen: { [key: number]: number } = {};
 
-        if (map.has(complement)) {
-            return [map.get(complement)!, i];
-        }
+  for (let i = 0; i < nums.length; i++) {
+    const complement = target - nums[i];
+    const prevIndex = seen[complement];
 
-        map.set(nums[i], i);
+    if (prevIndex !== undefined) {
+      return [prevIndex, i];
     }
 
-    return []; 
+    seen[nums[i]] = i;
+  }
+
+  throw new Error("No two sum solution found");
 }
