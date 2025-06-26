@@ -1,6 +1,6 @@
 class Solution:
     def isPalindrome(self, x: int) -> bool:
-        arr = list(str(x))
+        arr = list(map(str,str(x)))
         leng = len(arr)
         limit = math.ceil(leng/2)
         a = 0
@@ -15,7 +15,3 @@ class Solution:
 
         if a == limit:
             return True
-
-            
-        
- 
