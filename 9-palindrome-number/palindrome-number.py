@@ -1,5 +1,8 @@
 class Solution:
     def isPalindrome(self, x: int) -> bool:
+        if (x < 0):
+            return False
+
         arr = str(x)
         return arr == arr[::-1]
         
