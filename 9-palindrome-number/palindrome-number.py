@@ -1,6 +1,8 @@
 class Solution:
     def isPalindrome(self, x: int) -> bool:
-        arr = list(map(str,str(x)))
+        arr = str(x)
+        return arr == arr[::-1]
+        
         leng = len(arr)
         limit = math.ceil(leng/2)
         a = 0
