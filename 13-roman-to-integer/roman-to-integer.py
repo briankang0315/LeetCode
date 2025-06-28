@@ -1,29 +1,24 @@
 class Solution:
     def romanToInt(self, s: str) -> int:
-        roman = list(s)
+        value = {
+            'I': 1,
+            'V': 5,
+            'X': 10,
+            'L': 50,
+            'C': 100,
+            'D': 500,
+            'M': 1000
+        }
 
-        number = list(map(lambda x: 1 if x == "I" else x, roman))
-        number = list(map(lambda x: 5 if x == "V" else x, number))
-        number = list(map(lambda x: 10 if x == "X" else x, number))
-        number = list(map(lambda x: 50 if x == "L" else x, number))
-        number = list(map(lambda x: 100 if x == "C" else x, number))
-        number = list(map(lambda x: 500 if x == "D" else x, number))
-        number = list(map(lambda x: 1000 if x == "M" else x, number))
-
-        actual = []
+        total = 0
         n = 0
-       
-        while n < len(number):
-            if n+1 < len(number):
-                if (number[n] < number[n+1]):
-                    m = number[n+1] - number[n]
-                    n += 2
-                    actual.append(m)
-                else:
-                    actual.append(number[n])
-                    n+=1
+
+        while n < len(s):
+            if n + 1 < len(s) and value[s[n]] < value[s[n + 1]]:
+                total += value[s[n + 1]] - value[s[n]]
+                n += 2
             else:
-                actual.append(number[n])
-                n+=1
-        total = sum(actual)
+                total += value[s[n]]
+                n += 1
+
         return total
