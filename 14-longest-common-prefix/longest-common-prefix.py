@@ -37,7 +37,8 @@ class Solution:
                 if count >= (len(strs) - 1)
             ]
             results = "".join(duplicates)
-           
+            
+        # 재차 확인
         while results and not all(s.startswith(results) for s in strs):
             results = results[:-1]
 
